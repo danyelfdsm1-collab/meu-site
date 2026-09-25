@@ -87,8 +87,8 @@
         </div>
         <p style="color:hsl(40 30% 97% / .7);font-size:.925rem;line-height:1.7;margin:0 0 1.2rem;">Atendimento jurídico moderno, humanizado e acessível. Comprometido com a excelência e a ética profissional.</p>
         <div style="display:flex;gap:.7rem;">
-          <a href="https://www.instagram.com/adv.danyelferreira/" target="_blank" rel="noopener" aria-label="Instagram" style="width:38px;height:38px;border-radius:999px;background:var(--navy-light);display:flex;align-items:center;justify-content:center;color:var(--cream);text-decoration:none;"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
-          <a href="https://www.facebook.com/danyelfsm/" target="_blank" rel="noopener" aria-label="Facebook" style="width:38px;height:38px;border-radius:999px;background:var(--navy-light);display:flex;align-items:center;justify-content:center;color:var(--cream);text-decoration:none;"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+          <a href="https://www.instagram.com/adv.danyelferreira/" target="_blank" rel="noopener" aria-label="Instagram" style="width:38px;height:38px;border-radius:999px;background:var(--navy-light);display:flex;align-items:center;justify-content:center;color:var(--cream);text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="https://www.facebook.com/danyelfsm/" target="_blank" rel="noopener" aria-label="Facebook" style="width:38px;height:38px;border-radius:999px;background:var(--navy-light);display:flex;align-items:center;justify-content:center;color:var(--cream);text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
         </div>
       </div>
       <div>
@@ -165,7 +165,14 @@ var FAQ=[
 function waLink(t){return "https://wa.me/"+WA+"?text="+encodeURIComponent(t);}
 function fmtBRL(n){return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}
 function fmtDateBR(s){if(!s)return'';var p=s.split('-');return p[2]+'/'+p[1]+'/'+p[0];}
-function ic(n,sz){return '<i data-lucide="'+n+'" style="width:'+(sz||18)+'px;height:'+(sz||18)+'px;"></i>';}
+var BRAND_ICONS={
+  instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>',
+  facebook:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>'
+};
+function ic(n,sz){
+  if(BRAND_ICONS[n]){return '<span style="display:inline-flex;width:'+(sz||18)+'px;height:'+(sz||18)+'px;">'+BRAND_ICONS[n]+'</span>';}
+  return '<i data-lucide="'+n+'" style="width:'+(sz||18)+'px;height:'+(sz||18)+'px;"></i>';
+}
 function refreshIcons(n){if(typeof lucide!=='undefined'&&lucide.createIcons){lucide.createIcons();}else if(n<30){setTimeout(function(){refreshIcons(n+1);},150);}}
 window.nav=function(p){location.hash='#'+p;window.scrollTo(0,0);};
 window.toggleMenu=function(){var m=document.getElementById('mobileMenu');m.style.display=(m.style.display==='block')?'none':'block';};
